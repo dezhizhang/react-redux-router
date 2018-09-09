@@ -1,11 +1,27 @@
 import React from 'react'
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import GameList from './GameList';
+
 
 class GamePages extends React.Component{
     render(){
         return(<div>
-            <div className={{width:'100px',height:'100px','background':'red'}}></div>
+            <GameList games={ this.props.games }/>
         </div>)
     }
 }
 
-export default GamePages;
+const mapStateToProps = (state) => {
+    return {
+        games:state.games
+
+    }
+}
+
+GamePages.propTypes={
+    games:PropTypes.array.isRequired
+
+}
+
+export default connect(mapStateToProps,{})(GamePages);

@@ -25,8 +25,8 @@ ReactDOM.render(
                 <NavLink exact className='item' to='/games'>Games</NavLink>
                 <NavLink exact className='item' to='/'>Add new Games</NavLink>
               </div>
-              <Route path='/' component={ App }/>
-              <Route path='/games' component={ GamePage }/>
+              <Route exact path='/' component={ App }/>
+              <Route exact path='/games' component={ GamePage }/>
             </div>
         </Router>
        
