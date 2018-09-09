@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import thunk from 'redux-thunk';
 import App from './components/App';
 import { createStore,applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
@@ -7,12 +8,13 @@ import { logger } from 'redux-logger';
 import rootReducers from './reducers/index';
 import GamePage from './components/GamePages'
 import { BrowserRouter as Router, Route,NavLink } from 'react-router-dom'
-
 import registerServiceWorker from './registerServiceWorker';
 
 
+
+
 const store = createStore(rootReducers,
-    applyMiddleware(logger)
+    applyMiddleware(logger,thunk)
 
     )
 
