@@ -6,8 +6,9 @@ import { createStore,applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { logger } from 'redux-logger';
 import rootReducers from './reducers/index';
-import GamePage from './components/GamePages'
-import { BrowserRouter as Router, Route,NavLink } from 'react-router-dom'
+import GamePage from './components/GamePages';
+import GameForm from './components/GameForm';
+import { BrowserRouter as Router, Route,NavLink } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
 
 
@@ -25,10 +26,11 @@ ReactDOM.render(
               <div className='ui three item menu'>
                 <NavLink exact className='item' to='/'>Home</NavLink>
                 <NavLink exact className='item' to='/games'>Games</NavLink>
-                <NavLink exact className='item' to='/'>Add new Games</NavLink>
+                <NavLink exact className='item' to='/games/new'>Add new Games</NavLink>
               </div>
               <Route exact path='/' component={ App }/>
               <Route exact path='/games' component={ GamePage }/>
+              <Route exact path='/games/new' component={ GameForm }/>
             </div>
         </Router>
        
