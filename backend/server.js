@@ -20,6 +20,15 @@ mongodb.MongoClient.connect(dbUrl,(err,clinet) => {
         })
 
     })
+
+    app.use((req,res)=> {
+        res.status(404).json({
+            errors:{
+                global:'你发送的地址不存在'
+            }
+        })
+    });
+
    
     app.listen('8082','localhost');
 

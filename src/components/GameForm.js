@@ -44,8 +44,11 @@ class GameForm extends React.Component{
         if(isValue){
             let {username,cover} = this.state;
             this.setState({ loading:true })
-            this.props.saveGame({ username,cover});
+            this.props.saveGame({ username,cover}).then(
+                ()=>{},
+                (err)=> err.response.json().then((errors)=>{ this.setState({errors,loading:false})} )
 
+                )
         }
 
     }
@@ -53,6 +56,7 @@ class GameForm extends React.Component{
         return (<div>
            <form className={ classnames('ui','form',{loading:this.state.loading})} onSubmit={this.handleSubmit}>
              <h1>新增用户信息表</h1>
+             {!!this.state.errors.global && <div className='ui negative message'>{this.state.error.global}</div>}
              <div className={ classnames('filed',{ error: !!this.state.errors.username})}>
                <label htmlFor='name'>用户名：</label>
                <input type='text' value={ this.state.username }  onChange={ this.handleChange} name='username'/>
