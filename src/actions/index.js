@@ -18,3 +18,15 @@ export const fetchGames = () => {
        
     }
 }
+
+export const saveGame = (data) => {
+    return dispatch => {
+        fetch('/api/games',{
+            method:'post',
+            body:JSON.stringify(data),
+            headers:{
+                "Content-Type":"application/json"
+            }
+        })
+    }
+}
