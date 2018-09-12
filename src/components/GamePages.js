@@ -11,6 +11,8 @@ class GamePages extends React.Component{
 
     }
     render(){
+        console.log(this.props);
+        
         return(<div>
             <GameList games={ this.props.games }/>
         </div>)
