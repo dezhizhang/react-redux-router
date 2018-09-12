@@ -15,6 +15,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "body-parser": "^1.18.3",
     "classnames": "^2.2.6",
     "express": "^4.16.3",
     "mongodb": "^3.1.4",
