@@ -33,6 +33,18 @@ mongodb.MongoClient.connect(dbUrl,(err,clinet) => {
 
     })
 
+    app.get('/api/games/:id',(req,res) => {
+        db.collection('games').findOne({_id: new mongodb.ObjectId(req.param._id)},(err,game) => {
+            if(err){
+                console.log('查询失败'+err);
+                return;
+
+            }
+            res.json({game});
+
+        } )
+    })
+
     app.post('/api/games',(req,res) => {
        const { errors,isValied } =validate(req.body);
        if(isValied){

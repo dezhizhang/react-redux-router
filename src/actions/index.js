@@ -1,4 +1,4 @@
-import { SET_GAMES} from '../contents/index';
+import { SET_GAMES,GAME_FETCHED } from '../contents/index';
 
 export const setGames = (games) => {
    return {
@@ -46,4 +46,20 @@ export const saveGame = (data) => {
         }).then(handleResponse)
         
     }
+}
+
+export const  gameFetched = (game) => {
+    return {
+        type:GAME_FETCHED,
+        game
+    }
+}
+
+export const fetchedGame = (id) => {
+    return dispatch => {
+        return fetch(`/api/games/${id}`)
+        .then(res => res.json())
+        .then(data => dispatch(gameFetched(data.game)))
+}
+
 }

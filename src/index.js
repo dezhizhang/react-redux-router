@@ -31,6 +31,7 @@ ReactDOM.render(
               <Route exact path='/' component={ App }/>
               <Route exact path='/games' component={ GamePage }/>
               <Route exact path='/games/new' component={ GameForm }/>
+              <Route exact path='/game/:_id' component={ GameForm }/>
             </div>
         </Router>
        

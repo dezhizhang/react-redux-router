@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
-import { saveGame } from '../actions/index';
+import { saveGame,fetchedGame } from '../actions/index';
 import { Redirect } from 'react-router-dom';
 
 
@@ -55,6 +55,13 @@ class GameForm extends React.Component{
         }
 
     }
+    componentDidMount(){
+        const { match } = this.props;
+        if(match.params._id){
+            this.props.fetchedGame(match.params._id);
+
+        }
+    }
     render(){
         const form=(
             <form className={ classnames('ui','form',{loading:this.state.loading})} onSubmit={this.handleSubmit}>
@@ -95,5 +102,5 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps,{ saveGame })(GameForm)
+export default connect(mapStateToProps,{ saveGame,fetchedGame })(GameForm)
 
