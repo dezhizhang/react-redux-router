@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 import GameCard from './GameCard'
+import { connect } from 'react-redux';
+
 
 const GameList = ({ games }) => {
     const emptyMessage = (
@@ -22,4 +24,13 @@ GameList.propTypes={
     games:PropTypes.array.isRequired
 }
 
-export default GameList;
+const mapStateProps = (state) => {
+    console.log(state);
+    
+    return {
+        game:state.games
+    }
+}
+
+export default connect(mapStateProps,{ })(GameList);
+

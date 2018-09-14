@@ -96,10 +96,16 @@ class GameForm extends React.Component{
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
+const mapStateToProps = (state,props) => {
+    let { match } = props;
+    console.log(state);
 
+    if(match.params._id){
+        return {
+            game:state.game.find(item=> item._id ===match.params._id)
+        }
     }
+    return { game : null }
 }
 
 export default connect(mapStateToProps,{ saveGame,fetchedGame })(GameForm)
